@@ -43,7 +43,7 @@ img {
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
-    width: 50%;
+    width: min(50vh, 50vw);
     border-radius: 10%;
 }
 

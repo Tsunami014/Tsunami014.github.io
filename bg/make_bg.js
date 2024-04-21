@@ -35,10 +35,11 @@ function next() {
     var currentline = lines[lines.length-1];
     var make_newline = false;
     var padding = get_padding(currentline.outerHTML);
-    if (total_length(currentline) > document.body.offsetWidth-40-padding-80) {
+    var linetotallen = total_length(currentline);
+    if (linetotallen > document.body.offsetWidth-40-padding-80) {
         make_newline = true;
     }
-    if (make_newline || currentline.children.length > 10 || Math.random() < 0.2) {
+    if ((make_newline || currentline.children.length > 10 || Math.random() < 0.2)&&linetotallen > 50) {
         make_newline = true;
         if (lines.length > 10) {
             lines[0].remove();
@@ -51,7 +52,7 @@ function next() {
             changeby = -1;
         }
         make_line(Math.max(0, Math.min(padding+changeby*40, 360)));
-    }
+    } else {make_newline = false;}
     if (make_newline || currentline.children.length == 0 || get_size(currentline.children[currentline.children.length-1].outerHTML) > max_size || Math.random() < 0.1) {
         make_block(Math.random()*20 + Math.random()*20, Math.random()<0.2&&!make_newline);
     } else {

@@ -1,0 +1,25 @@
+#code-blocks {
+    position: absolute;
+    top: 80;
+    left: 40;
+}
+
+.code-line {
+    display: flex;
+    flex-direction: row;
+}
+
+.block {
+    position:relative;
+    right: 7px;
+    height: 15px;
+    background-color: aquamarine;
+    border-radius: 8px;
+    border: 5px solid black;
+}
+
+.invisible {
+    background-color: transparent;
+    border-color: transparent;
+}
+

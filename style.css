@@ -1,0 +1,59 @@
+html, body {
+    background: linear-gradient(25deg, rgb(61, 87, 208, 1) 0%, rgb(14, 200, 215) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    color: #333;
+    overflow:hidden;
+}
+
+/*Texts*/
+p {
+    text-align: center;
+    padding: 5px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+a {
+    color: skyblue;
+}
+
+h1 {
+    text-align: center;
+    color: #666;
+}
+h2 {text-align: center;}
+/*ol {text-align: center;}
+li {text-align: center;}
+details {text-align: center;}*/
+summary {text-align: center;}
+.tiny {
+    font-size: 0.8em;
+}
+details > summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*Other stuff*/
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+#inside {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    border: 1px solid blue;
+    overflow: auto;
+}

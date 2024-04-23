@@ -38,15 +38,6 @@ details > summary {
 
 /*Other stuff*/
 
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    width: min(50vh, 50vw);
-    border-radius: 10%;
-}
-
 #inside {
     position: absolute;
     background: rgba(131, 131, 131, 0.7);

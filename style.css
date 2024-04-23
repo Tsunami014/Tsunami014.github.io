@@ -38,6 +38,12 @@ details > summary {
 
 /*Other stuff*/
 
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #inside {
     position: absolute;
     background: rgba(131, 131, 131, 0.7);

@@ -3,11 +3,11 @@ const MAX_INVIS_SIZE = 10;
 const MAX_LINES = 20;
 
 
-function make_line(padding=0) {
+export function make_line(padding=0) {
     document.getElementById('code-blocks').innerHTML += '<div class="code-line" style="padding-left: '+padding.toString()+'px"></div>';
 }
 
-function make_block(width=10, invis=false) {
+export function make_block(width=10, invis=false) {
     var lines = document.getElementById('code-blocks').children;
     var invistxt = ""
     if (invis) {
@@ -16,19 +16,19 @@ function make_block(width=10, invis=false) {
     lines[lines.length-1].innerHTML += '<div class="block'+invistxt+'" style="width: '+width.toString()+'px"></div>';
 }
 
-function get_size(html_block) {
+export function get_size(html_block) {
     return parseInt(html_block.match('(?<=style="width: ).+?(?=px)')[0]);
 }
 
-function is_invisible(html_block) {
+export function is_invisible(html_block) {
     return html_block.includes('invisible');
 }
 
-function get_padding(html_block) {
+export function get_padding(html_block) {
     return parseInt(html_block.match('(?<=style="padding-left: ).+?(?=px)')[0]);
 }
 
-function total_length(line) {
+export function total_length(line) {
     var blocks = line.children;
     var sum = 0;
     for (var i = 0; i < blocks.length; i++) {
@@ -37,7 +37,7 @@ function total_length(line) {
     return sum;
 }
 
-function next() {
+export function next(timeout = true) {
     var lines = document.getElementById('code-blocks').children;
     var currentline = lines[lines.length-1];
     var make_newline = false;
@@ -73,7 +73,9 @@ function next() {
     }
     //var currentblock = currentline.children[currentline.children.length-1]
     //currentblock.innerHTML = get_size(currentblock.outerHTML);
-    setTimeout(next, Math.max(0, Math.random()*100));
+    if (timeout) {
+        setTimeout(next, Math.max(0, Math.random()*100));
+    }
 }
 
 window.onload = function() {
@@ -82,4 +84,6 @@ window.onload = function() {
     make_block();
     setTimeout(next,100);
 };
+
+export {MAX_SIZE, MAX_INVIS_SIZE, MAX_LINES};
   

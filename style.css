@@ -44,6 +44,12 @@ img {
     margin-right: auto;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 #inside {
     position: absolute;
     background: rgba(131, 131, 131, 0.7);

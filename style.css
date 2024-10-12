@@ -9,7 +9,7 @@ html, body {
 }
 
 /*Texts*/
-p {
+p, li {
     text-align: center;
     padding: 5px;
     padding-bottom: 0;

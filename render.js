@@ -61,7 +61,7 @@ function formatText(elm, str) {
                 })
                 .replaceAll(/<\/ol>\s*<ol>/g, '')
                 
-                .replaceAll(/!\[((?:(?:\[[^\]]*\]\([^)]*\))|[^\]])*)\]\(([^)]*)\)/g, '<img class="format-img" href="$2" alt="$1">')
+                .replaceAll(/!\[((?:(?:\[[^\]]*\]\([^)]*\))|[^\]])*)\]\(([^)]*)\)/g, '<img class="format-img" src="$2" alt="$1">')
                 .replaceAll(/\[([^\]]*)\]\(([^)]*)\)/g, '<a href="$2">$1</a>')
 
                 .replaceAll(/^# ([^\n]*)$/gm, '<h1>$1</h1>')

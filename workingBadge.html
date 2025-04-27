@@ -1,0 +1,15 @@
+<body>
+  <script>
+let d = new Date(new Date().toLocaleString("en-US", {timeZone: "Australia/NSW"}));
+let t = d.getHours()+(d.getMinutes()/60);
+let icon = "🧑‍💻";
+let txt = "Coding";
+let colour = "pink";
+if ((7 <= t && t < 18) || (d.getDay() === 0 || d.getDay() === 7)) {
+  icon = "💤";
+  txt = "Not coding";
+  colour = "orange";
+}
+document.body.innerHTML = `<img src="https://badgen.net/badge/${icon}/${txt}?cache=300&color=${colour}">`
+  </script>
+</body>

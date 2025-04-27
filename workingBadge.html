@@ -1,15 +1,13 @@
-<body>
-  <script>
-let d = new Date(new Date().toLocaleString("en-US", {timeZone: "Australia/NSW"}));
-let t = d.getHours()+(d.getMinutes()/60);
-let icon = "🧑‍💻";
-let txt = "Coding";
-let colour = "pink";
-if ((7 <= t && t < 18) || (d.getDay() === 0 || d.getDay() === 7)) {
-  icon = "💤";
-  txt = "Not coding";
-  colour = "orange";
-}
-document.body.innerHTML = `<img src="https://badgen.net/badge/${icon}/${txt}?cache=300&color=${colour}">`
-  </script>
-</body>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="30">
+  <script type="application/ecmascript"><![CDATA[
+    const d = new Date(new Date().toLocaleString('en-US',{timeZone:'Australia/Sydney'}));
+    const t = d.getHours() + d.getMinutes()/60;
+    let icon='🧑‍💻',txt='Coding',col='pink';
+    if(d.getDay()===0||d.getDay()===6||t<7||t>=18){
+      icon='💤'; txt='Not coding'; col='orange';
+    }
+    document.documentElement.innerHTML =
+      `<image href="https://badgen.net/badge/${encodeURIComponent(icon)}/${encodeURIComponent(txt)}?cache=300&color=${col}"
+              width="150" height="30"/>`;
+  ]]></script>
+</svg>

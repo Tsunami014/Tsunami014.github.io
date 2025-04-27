@@ -107,3 +107,53 @@ img {
     font-family:'Courier New', Courier, monospace;
     padding: 2px;
 }
+
+.quote {
+    background-color: rgba(125, 125, 125, 0.5);
+    border-left: solid 3px rgba(64, 64, 64, 0.8);
+    padding-left: 2px;
+    display: inline-block;
+    padding-left: 5px;
+}
+
+.code-inline {
+    border: solid 1px rgba(125, 125, 125, 0.25);
+    background-color: rgba(125, 125, 125, 0.25);
+    border-radius: 5px;
+    font-family:'Courier New', Courier, monospace;
+    padding: 2px;
+}
+
+.code-block {
+    padding: 15px;
+    border-radius: 5px;
+    border: solid 2px rgba(125, 125, 125, 0.8);
+    padding-top: 5px;
+    position: relative;
+}
+.codetop {
+    width: calc(100% - 20px);
+    position: sticky;
+    top: 10px;
+    background-color: rgba(var(--accent-2-strong-rgb), 0.4);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 5px 0 10px 0;
+}
+.codelang {
+    width: inherit;
+    pointer-events: none;
+    font-size: small;
+}
+.code-block-txt {
+    overflow-x: auto;
+}
+.code-block button {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 5px 10px;
+    white-space: nowrap;
+}

@@ -78,3 +78,28 @@ img {
     border: 1px solid blue;
     overflow: auto;
 }
+
+/* render.js styles */
+.format-table {
+    border-collapse: collapse;
+    border-style: hidden;
+    border-radius: 7px;
+    box-shadow: 0 0 0 2px #555;
+    margin-block: 10px;
+}
+
+.format-table td {
+    border: 2px solid #666;
+    padding: 3px;
+}
+
+.table-top {
+    border-bottom: 2px solid #333 !important;
+}
+.code-inline {
+    border: solid 1px rgba(125, 125, 125, 0.25);
+    background-color: rgba(125, 125, 125, 0.25);
+    border-radius: 5px;
+    font-family:'Courier New', Courier, monospace;
+    padding: 2px;
+}

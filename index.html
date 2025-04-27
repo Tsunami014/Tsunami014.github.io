@@ -11,38 +11,13 @@
     <script src="bg/make_bg.js" type="module"></script>
     <link rel="stylesheet" href="bg/bg.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-img {
-    padding: 10px;
-    width: min(50vh, 50vw);
-    border-radius: 10%;
-}
-    </style>
+    
+    <script src="render.js"></script>
 </head>
 <body>
-    <div id="inside">
-        <h1>About me</h1>
-        <h2>I'm Max! Also known as Tsunami014!</h2>
-        <img src="https://raw.githubusercontent.com/Tsunami014/Tsunami014/main/TsunamiFox.png" alt="Tsunami fox HEHE >:)">
-        <p>Software engineer | AI | programmer | Open Source</p>
-        <p>Hi! I'm Max, the renound maker of <a href="https://tsunami014.github.io/Blaze-Sudio">Blaze Sudios</a> and friends with <span style="color: lightblue">@Stimbix</span> and <span style="color: lightblue">@Imzafish</span>! I make things with code. They're really cool things.</p>
-        <details>
-            <summary>My coding languages</summary>
-            <hr>
-            <p>I can code in:</p>
-            <ol>
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li><span style="text-decoration: line-through;">HTML&CSS</span> (not a PROGRAMMING language, It's technically a markup language)</li>
-            </ol>
-            <p>I want to learn to code in other languages too!</p>
-            <hr>
-        </details>
-        <p>I also like Wings of Fire, dragons in general, doggos, foxes and lots of documentation (although unfortunately lots of docs means lots of time spent writing docs, so whether or not I get up to it is a mystery)</p>
-        <p>I also like it when the code ACTUALLY WORKS and I think the BEST part of coding is when you FINALLY find that stupid bug that has been annoying you for AAGES and your code FINALLY WORKS 😊 (Like when I was making this 😅)</p>
-        <p class="tiny">And my dæmon's name is Grapefruit and she's a snowy-white fox 🦊 :)</p>
-        <p>I also work on things a LOT and have VERY regular commits 😳</p>
-        <br>
-    </div>
+    <script>
+        render('https://raw.githubusercontent.com/Tsunami014/Tsunami014/refs/heads/main/README.md')
+    </script>
+    <div id="inside"></div>
 </body>
 </html>

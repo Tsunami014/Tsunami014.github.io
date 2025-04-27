@@ -1,13 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="150" height="30">
   <script type="application/ecmascript"><![CDATA[
-    const d = new Date(new Date().toLocaleString('en-US',{timeZone:'Australia/Sydney'}));
-    const t = d.getHours() + d.getMinutes()/60;
-    let icon='🧑‍💻',txt='Coding',col='pink';
-    if(d.getDay()===0||d.getDay()===6||t<7||t>=18){
-      icon='💤'; txt='Not coding'; col='orange';
-    }
-    document.documentElement.innerHTML =
-      `<image href="https://badgen.net/badge/${encodeURIComponent(icon)}/${encodeURIComponent(txt)}?cache=300&color=${col}"
-              width="150" height="30"/>`;
-  ]]></script>
+  const d = new Date(new Date().toLocaleString('en-US',{timeZone:'Australia/Sydney'}));
+  const t = d.getHours() + d.getMinutes()/60;
+  let icon='🧑‍💻',txt='Coding',col='pink';
+  if(d.getDay()===0||d.getDay()===6||t<7||t>=18){
+    icon='💤'; txt='Not coding'; col='orange';
+  }
+  const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+  img.setAttribute('href', `https://badgen.net/badge/${encodeURIComponent(icon)}/${encodeURIComponent(txt)}?cache=300&color=${col}`);
+  img.setAttribute('width', '150');
+  img.setAttribute('height', '30');
+  document.documentElement.appendChild(img);
+]]></script>
 </svg>

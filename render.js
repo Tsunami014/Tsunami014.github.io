@@ -60,12 +60,11 @@ function formatText(elm, str, besafe = false) {
                 .replaceAll(/!\[((?:(?:\[[^\]]*\]\([^)]*\))|[^\]])*)\]\(([^)]*)\)/g, '<img class="format-img" src="$2" alt="$1">')
                 .replaceAll(/\[([^\]]*)\]\(([^)]*)\)/g, '<a href="$2">$1</a>')
 
-                .replaceAll(/^# ([^\n]*)$/gm, '<h1>$1</h1>')
-                .replaceAll(/^## ([^\n]*)$/gm, '<h2>$1</h2>')
-                .replaceAll(/^### ([^\n]*)$/gm, '<h3>$1</h3>')
-                .replaceAll(/^#### ([^\n]*)$/gm, '<h4>$1</h4>')
-                .replaceAll(/^##### ([^\n]*)$/gm, '<h5>$1</h5>')
-                .replaceAll(/^###### ([^\n]*)$/gm, '<h6>$1</h6>')
+                .replace(/^#{1,6} (.+)$/gm, (_, content, offset, string) => {
+                    const level = string[offset] === '#' ? string.slice(offset, string.indexOf(' ', offset)).length : 1;
+                    const id = content.toLowerCase().replace(/\s+/g, '-');
+                    return `<h${level} id="${id}">${content}</h${level}>`;
+                })
                 .replaceAll(/`([^`\n]+)`/g, '<span class="code-inline">$1</span>')
 
                 .replaceAll(/^[*\-_]{3}$/gm, '<hr>')

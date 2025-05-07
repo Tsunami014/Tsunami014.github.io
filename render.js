@@ -6,15 +6,6 @@ function formatText(elm, str) {
         // .replaceAll(/"/gm, "&quot;")
         // .replaceAll(/'/gm, "&#039;");
     
-    if (safeText.startsWith('&lt;think&gt;')) {
-        let thoughtsHeader = '<summary><span class="txt-outline">💭</span>  Thoughts</summary>';
-        if (safeText.match(/^&lt;[\/\\]think&gt;$/gm) !== null) {
-            safeText = safeText.replace(/^&lt;think&gt;\n((?:.|\n)+)\n&lt;[\/\\]think&gt;\n?/g, `<details class="thoughts" open>${thoughtsHeader}$1</details>`);
-        } else {
-            safeText = `<details class="thoughts" open>${thoughtsHeader}${safeText.slice('&lt;think&gt;\n'.length)}</details>`
-        }
-    }
-    
     var blocks = [];
     // TODO: Backslashes
     safeText.split(/^\s*```/gm).forEach((val, idx)=>{
@@ -117,3 +108,31 @@ async function render(mdFile) {
     respt = await resp.text();
     formatText(document.getElementById('inside'), respt);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const meta = document.createElement('meta');
+    meta.name = "viewport";
+    meta.content = "width=device-width, initial-scale=1";
+    document.head.appendChild(meta);
+
+    const comment1 = document.createComment("Made with love by Tsunami014");
+    document.head.appendChild(comment1);
+
+    const comment2 = document.createComment("Background inspiration from https://curtisfenner.com/");
+    document.head.appendChild(comment2);
+
+    const script = document.createElement('script');
+    script.src = "https://tsunami014.github.io/bg/make_bg.js";
+    script.type = "module";
+    document.head.appendChild(script);
+
+    const link1 = document.createElement('link');
+    link1.rel = "stylesheet";
+    link1.href = "https://tsunami014.github.io/bg/bg.css";
+    document.head.appendChild(link1);
+
+    const link2 = document.createElement('link');
+    link2.rel = "stylesheet";
+    link2.href = "https://tsunami014.github.io/style.css";
+    document.head.appendChild(link2);
+});

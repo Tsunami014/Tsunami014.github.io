@@ -1,8 +1,10 @@
 # Some useful git commands
 
+## Table of contents
+
 | Table of Contents |
 |-------------------|
-| [Top](#) |
+| [Top](#some-useful-git-commands) |
 | [Nice git commits](#nice-git-commits) |
 | [How to edit a commit message](#how-to-edit-a-commit-message) |
 
@@ -27,7 +29,7 @@ Git log comes with a bunch of different formats you can try as well! To use them
 ```
 <hash> <title-line>
 ```
-```
+```bash
 git --no-pager log --pretty=oneline
 ```
 
@@ -38,7 +40,7 @@ Author: <author>
 
 <title-line>
 ```
-```
+```bash
 git --no-pager log --pretty=short
 ```
 
@@ -52,7 +54,7 @@ Date:   <author-date>
 
 <full-commit-message>
 ```
-```
+```bash
 git --no-pager log --pretty=medium
 ```
 
@@ -66,7 +68,7 @@ Commit: <committer>
 
 <full-commit-message>
 ```
-```
+```bash
 git --no-pager log --pretty=full
 ```
 
@@ -82,7 +84,7 @@ CommitDate: <committer-date>
 
 <full-commit-message>
 ```
-```
+```bash
 git --no-pager log --pretty=fuller
 ```
 
@@ -90,7 +92,7 @@ git --no-pager log --pretty=fuller
 ```
 <abbrev-hash> (<title-line>, <short-author-date>)
 ```
-```
+```bash
 git --no-pager log --pretty=reference
 ```
 
@@ -103,7 +105,7 @@ Subject: [PATCH] <title-line>
 
 <full-commit-message>
 ```
-```
+```bash
 git --no-pager log --pretty=email
 ```
 
@@ -117,7 +119,7 @@ Subject: [PATCH] <title-line>
 >From quoted lines to avoid confusion
 <full-commit-message>
 ```
-```
+```bash
 git --no-pager log --pretty=mboxrd
 ```
 
@@ -130,7 +132,7 @@ committer <committer> <timestamp>
 
 <full-commit-message>
 ```
-```
+```bash
 git --no-pager log --pretty=raw
 ```
 

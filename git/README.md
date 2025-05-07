@@ -3,7 +3,7 @@
 | Table of Contents |
 |-------------------|
 | [Top](#) |
-| [Nice git commits](#nice-git-commits)
+| [Nice git commits](#nice-git-commits) |
 | [How to edit a commit message](#how-to-edit-a-commit-message) |
 
 ## Nice git commits
@@ -172,7 +172,7 @@ Here are all the (important) %s you can use: (**bolded** ones are extra importan
 | `%b` | **body** |
 | `%B` | raw body (unwrapped subject and body) |
 | `%N` | commit notes (if exists) (IS NOT THE SAME AS BODY) |
-| `%G?` | signature validity (see [here](https://git-scm.com/docs/pretty-formats#Documentation/pretty-formats.txt-emGem) for more info)
+| `%G?` | signature validity (see [here](https://git-scm.com/docs/pretty-formats#Documentation/pretty-formats.txt-emGem) for more info) |
 
 `%C(<colour>)` changes the colour of the text to the colour specified, or `reset` to reset the colour.
 

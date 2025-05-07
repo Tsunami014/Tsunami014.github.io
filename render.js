@@ -1,10 +1,15 @@
-function formatText(elm, str) {
-    var safeText = str
-        // .replaceAll(/&/gm, "&amp;")
-        // .replaceAll(/</gm, "&lt;")
-        // .replaceAll(/>/gm, "&gt;")
-        // .replaceAll(/"/gm, "&quot;")
-        // .replaceAll(/'/gm, "&#039;");
+function formatText(elm, str, besafe = false) {
+    var safeText;
+    if (besafe) {
+        safeText = str
+            .replaceAll(/&/gm, "&amp;")
+            .replaceAll(/</gm, "&lt;")
+            .replaceAll(/>/gm, "&gt;")
+            .replaceAll(/"/gm, "&quot;")
+            .replaceAll(/'/gm, "&#039;");
+    } else {
+        safeText = str;
+    }
     
     var blocks = [];
     // TODO: Backslashes
@@ -80,17 +85,13 @@ function formatText(elm, str) {
                 code = val.slice(newlineIndex + 1);
             }
             
-            var btn = '';
             if (!language) {
                 language = 'plain'
             } else {
-                const lang = language.toLowerCase().trim();
-                if (lang === "html") {
-                    btn = '<button onclick="runHTML(this)">💻Run code</button>'
-                }
+                language = language.toLowerCase().trim();
             }
 
-            newVal = `<div class="code-block"><div class="codetop"><span class="codelang">${language}</span>${btn}<button onclick="copyCodeBlock(this)">📋️ Copy</button></div><div class="code-${language} code-block-txt">${code}</div></div><br>`;
+            newVal = `<div class="code-block"><div class="codetop"><span class="codelang">${language}</span><button onclick="copyCodeBlock(this)">📋️ Copy</button></div><div class="code-${language} code-block-txt">${code}</div></div><br>`;
         }
         blocks.push(
             newVal
@@ -103,10 +104,20 @@ function formatText(elm, str) {
 
     elm.innerHTML = blocks.join('');
 }
-async function render(mdFile) {
+async function render(mdFile, besafe = false) {
     resp = await fetch(mdFile);
     respt = await resp.text();
-    formatText(document.getElementById('inside'), respt);
+    formatText(document.getElementById('inside'), respt, besafe);
+}
+
+function copyCodeBlock(elm) {
+    navigator.clipboard.writeText(elm.parentElement.parentElement.lastElementChild.innerText.replaceAll(/\s(?<![\n\t\r\f\v ])/g, ' '));
+    let origTxt = elm.innerText;
+    elm.innerText = '✔ Copied!';
+    setTimeout(()=>{
+        elm.innerText = origTxt;
+        elm.blur();
+    }, 1000)
 }
 
 document.addEventListener('DOMContentLoaded', function() {

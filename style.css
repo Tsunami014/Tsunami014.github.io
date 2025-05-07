@@ -58,7 +58,7 @@ img {
 
 #inside {
     position: absolute;
-    background: rgba(131, 131, 131, 0.7);
+    background: rgba(131, 131, 131, 0.8);
     color: #f1f1f1;
     padding: 10px;
 
@@ -75,7 +75,7 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background: rgba(131, 131, 131, 0.7);
+    background: rgba(131, 131, 131, 0.8);
     color: #f1f1f1;
     padding: 10px;
     width: 50%;
@@ -101,15 +101,15 @@ img {
     border-bottom: 2px solid #333 !important;
 }
 .code-inline {
-    border: solid 1px rgba(125, 125, 125, 0.25);
-    background-color: rgba(125, 125, 125, 0.25);
+    border: solid 1px rgba(125, 125, 125, 0.3);
+    background-color: rgba(125, 125, 125, 0.3);
     border-radius: 5px;
     font-family:'Courier New', Courier, monospace;
     padding: 2px;
 }
 
 .quote {
-    background-color: rgba(125, 125, 125, 0.5);
+    background-color: rgba(125, 125, 125, 0.6);
     border-left: solid 3px rgba(64, 64, 64, 0.8);
     padding-left: 2px;
     display: inline-block;
@@ -117,8 +117,8 @@ img {
 }
 
 .code-inline {
-    border: solid 1px rgba(125, 125, 125, 0.25);
-    background-color: rgba(125, 125, 125, 0.25);
+    border: solid 1px rgba(125, 125, 125, 0.3);
+    background-color: rgba(125, 125, 125, 0.3);
     border-radius: 5px;
     font-family:'Courier New', Courier, monospace;
     padding: 2px;
@@ -127,7 +127,7 @@ img {
 .code-block {
     padding: 15px;
     border-radius: 5px;
-    border: solid 2px rgba(125, 125, 125, 0.8);
+    border: solid 2px rgba(125, 125, 125, 0.9);
     padding-top: 5px;
     position: relative;
 }
@@ -135,7 +135,7 @@ img {
     width: calc(100% - 20px);
     position: sticky;
     top: 10px;
-    background-color: rgba(var(--accent-2-strong-rgb), 0.4);
+    background-color: rgba(var(--accent-2-strong-rgb), 0.5);
     border-radius: 10px;
     padding: 10px;
     display: flex;

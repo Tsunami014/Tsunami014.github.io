@@ -4,7 +4,6 @@
 
 | Table of Contents |
 |-------------------|
-| [Top](#some-useful-git-commands) |
 | [Nice git commits](#nice-git-commits) |
 | [How to edit a commit message](#how-to-edit-a-commit-message) |
 
@@ -180,6 +179,8 @@ Here are all the (important) %s you can use: (**bolded** ones are extra importan
 
 Colours avaliable: `normal`, `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white` and `default`
 
+---
+
 # How to edit a commit message
 Have you ever needed to display every git commit you have made, but are not bothered to copy it into one big file?
 
@@ -234,7 +235,7 @@ git filter-branch -f --commit-filter {
   git commit-tree $args < $tmp
 } --tag-name-filter cat -- --all --remotes=origin
 ```
-3. PUSH IT. THERE IS NO TURNING BACK FROM FORCE PUSHING, but at the same time ***IF YOU DO NOT FORCE PUSH GIT WILL GET VERY MESSED UP.***
+3. Force push it! THERE IS NO TURNING BACK FROM FORCE PUSHING, but at the same time ***IF YOU DO NOT FORCE PUSH GIT WILL GET VERY MESSED UP.***
 ```
 git push --force --all
 git push --force --tags

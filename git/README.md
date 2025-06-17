@@ -1,6 +1,6 @@
 # Some useful git commands
 
-## Table of contents
+# Table of contents
 
 | Table of Contents |
 |-------------------|
@@ -8,7 +8,7 @@
 | [Nice git commits](#nice-git-commits) |
 | [How to edit a commit message](#how-to-edit-a-commit-message) |
 
-## Nice git commits
+# Nice git commits
 If you need to see every commit you've made in a repository and want it to look nice, you can run the following command:
 ```bash
 git --no-pager log --pretty=format:"%C(red)%h%C(reset) : %C(green)%ad%C(reset)%n%C(blue)%s%C(reset)%n%C(yellow)%b%C(reset)"
@@ -136,7 +136,7 @@ committer <committer> <timestamp>
 git --no-pager log --pretty=raw
 ```
 
-### Format strings
+## Format strings
 Basically, a format string is a string, where some special characters are replaced. The git devs basically go:
 ```py
 for log in git_history:
@@ -180,7 +180,7 @@ Here are all the (important) %s you can use: (**bolded** ones are extra importan
 
 Colours avaliable: `normal`, `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white` and `default`
 
-## How to edit a commit message
+# How to edit a commit message
 Have you ever needed to display every git commit you have made, but are not bothered to copy it into one big file?
 
 (If you just want to put it in a file, see [the above segment](#nice-git-commits) to not have to write everything manually)
@@ -198,13 +198,67 @@ Here are some important things:
 git fetch origin
 git reset --hard origin/master
 ```
+(obviously changing `origin/master` to whatever your branch name is, e.g. `origin/main`)
 and everything will be reset back to what is currently pushed on github and you can try again!
 - **AT THE END DO NOT FORGET TO *FORCE* PUSH**
 - **I DO NOT ACCEPT ANY RESPONSIBILITY IF YOU STUFF UP SOMETHING** (but you *shouldn't* stuff anything up if you do everything right, don't worry)
 
-Here are the steps to do that (provided you can use the git command; try typing `git -v` in the terminal to see if you can run this):
+Here are the steps to do that (provided you can use the git command; try typing `git -v` in the terminal to see if you can run this)
+## Method 1
+Features:
+- Opens every single commit (you have no control over which, it just opens every one of them)
+- (At least on Linux) has a nice 'estimate for how long the rest will take'
+- Works with branches and tags
+- Keeps the date
 1. Open the folder in the terminal through file explorer's right click menu, or use VSCode's terminal. It should have the folder name visible in the terminal, just before the cursor.
-2. Run `git rebase -i --root`
+2. Run this hell of a command
+    - For Linux: (ensure xed is installed and no xed windows are open, or change the command)
+```
+git filter-branch -f  --commit-filter '
+    export GIT_AUTHOR_DATE="$GIT_AUTHOR_DATE"
+    export GIT_COMMITTER_DATE="$GIT_COMMITTER_DATE"
+    TMP=$(mktemp /tmp/msg.XXXXXX)
+    git log -1 --format=%B "$GIT_COMMIT" > "$TMP"
+    ${EDITOR:-xed} "$TMP"
+    git commit-tree "$@" < "$TMP"
+  '   --tag-name-filter cat   -- --all --remotes=origin
+```
+    - For Windows: (untested as of rn)
+```
+git filter-branch -f --commit-filter {
+  $tmp = Join-Path $env:TEMP ('msg'+[guid]::NewGuid()+'.txt')
+  git log -1 --format=%B $env:GIT_COMMIT > $tmp
+  notepad $tmp
+  $env:GIT_AUTHOR_DATE = $env:GIT_AUTHOR_DATE
+  $env:GIT_COMMITTER_DATE = $env:GIT_COMMITTER_DATE
+  git commit-tree $args < $tmp
+} --tag-name-filter cat -- --all --remotes=origin
+```
+3. PUSH IT. THERE IS NO TURNING BACK FROM FORCE PUSHING, but at the same time ***IF YOU DO NOT FORCE PUSH GIT WILL GET VERY MESSED UP.***
+```
+git push --force --all
+git push --force --tags
+git push --force --prune
+```
+## Method 2
+Features:
+- You have to specify all the commits you want to edit; good for a few, not good for a lot
+- It rewrites the dates; a workaround was found, but that does not work for tags or branches or etc.
+
+1. Open the folder in the terminal through file explorer's right click menu, or use VSCode's terminal. It should have the folder name visible in the terminal, just before the cursor.
+2. Run the git rebase command:
+```
+git rebase -i --root
+```
+**PLEASE NOTE**: You can also run the below instead to not modify any of the dates using the below scripts, but it will have an extra line 'exec' that you can just ignore. If you are just ammending lines, don't worry about it. If not, I don't really know.
+    - Linux/Mac I think 
+```
+git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_AUTHOR_DATE="%aD" git commit --amend --no-edit --reset-author' rebase -i --root
+```
+    - Windows
+```
+git -c rebase.instructionFormat="%s%nexec GIT_COMMITTER_DATE=\"%cD\" GIT_AUTHOR_DATE=\"%aD\" git commit --amend --no-edit --reset-author" rebase -i --root
+```
 3. You should see a text editor pulled up somewhere with all your commits and things next to them (this could be in the terminal depending on git's configuration). That's good. Here is the breakdown of each line:
 ```
 pick <commit hash> <commit name>
